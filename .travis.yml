@@ -1,17 +1,17 @@
-<!-- 관리자 권한갖기 -->
+# 관리자 권한갖기 
 sudo: required
-<!-- 언어 선택 -->
+# 언어 선택 
 language: generic
-<!-- 도커 환경 구성 -->
+# 도커 환경 구성 
 services:
   - docker
-<!-- 스크립트를 실행할 수 있는 환경 설정(스크립트 실행 전) -->
+# 스크립트를 실행할 수 있는 환경 설정(스크립트 실행 전) 
 before_install:
   - echo "start Creating an image with dockerfile"
   - docker build -t ljb1905/docker-react-app -f Dockerfile.dev .
-<!-- 실행할 스크립트(테스트 실행) -->
+# 실행할 스크립트(테스트 실행) 
 script:
   - docker run -e CI=true ljb1905/docker-react-app npm run test -- --coverage
-<!-- 테스트 성공 후 할 일 -->
+# 테스트 성공 후 할 일 
 after_success:
   - echo "Test Success"
